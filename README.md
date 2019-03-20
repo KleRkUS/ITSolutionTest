@@ -3,7 +3,7 @@
 URL shortener by Vladislav Villevald.
 
 ## Achtung!
-**Only one copy of link is available!**
+**Only one copy of link is available!** \n
 *If there is this full link already you'll get it's shortened link, but you'll not be allowed to create your own.*
 
 
