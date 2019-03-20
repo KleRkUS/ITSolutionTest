@@ -10,6 +10,7 @@ class Controller_Main extends Controller
 	function action_index()
 	{	
 		//Constructing page
+		$data = $this->model->get_data();
 		$this->view->generate('main_view.php', 'template_view.php', $data);
 	}
 	
@@ -42,10 +43,12 @@ class Controller_Main extends Controller
 	//Checking if URL is available
 	function action_urlC($url, $table)
 	{
+		$u = new Redirect();
+		$var = $u->urlRedirectConstruct();
 		$status = $this->model->checkurl($url, $table);
 		//Status is link or false
 		if ($status) {
-			$status = 'This URL is already in use.<br> URL: '.$status;
+			$status = 'This URL is already in use.<br> URL: '.$var.$status;
 		} else {
 			$status = 'You can use this URL';
 		}

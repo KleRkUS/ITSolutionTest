@@ -1,6 +1,13 @@
 <?php
 class Model_Main extends Model
 {
+
+	public function get_data()
+	{
+		$redir = new Redirect();
+		$data = $redir->urlRedirectConstruct();
+		return $data;
+	}
 	
 	public function checkurl($var, $table)
 	{
@@ -34,8 +41,7 @@ class Model_Main extends Model
 		//If user's short link is in use, return warning
 		$urlConstruction = new Redirect();
 		$url = $urlConstruction->urlRedirectConstruct();
-		$shortUrl = $url.$user;
-		$shortStatus = $this->checkurl($shortUrl, 'short');
+		$shortStatus = $this->checkurl($user, 'short');
 		if (!$user) {
 			$user = $this->generateRandomString();
 			$answ = "URL: ";
@@ -56,7 +62,7 @@ class Model_Main extends Model
 		$rows = "id, link";
 		$url .= $user;
 		$answ .= $url;
- 		$str = '"'.$id.'", "'.$url.'"';
+ 		$str = '"'.$id.'", "'.$user.'"';
 		$query = $db->insert('links_short', $rows, $str);
 		$db->disconnect();
 		return $answ;
